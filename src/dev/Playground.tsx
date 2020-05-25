@@ -65,6 +65,7 @@ export default class Example extends Component {
           offsetRadius={this.state.offsetRadius}
           showNavigation={this.state.showNavigation}
           animationConfig={this.state.config}
+          navigationClass='navigation-class-button'
         />
         <div
           style={{

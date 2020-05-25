@@ -41,6 +41,7 @@ interface IProps {
   offsetRadius: number;
   animationConfig: object;
   goToSlideDelay: number;
+  navigationClass: string;
 }
 
 function mod(a: number, b: number): number {
@@ -183,23 +184,18 @@ class Carousel extends Component<IProps, IState> {
   }
 
   render() {
-    const { animationConfig, offsetRadius, showNavigation } = this.props;
+    const { animationConfig, offsetRadius, showNavigation, navigationClass } = this.props;
 
     let navigationButtons = null;
     if (showNavigation) {
       navigationButtons = (
-        <NavigationButtons>
-          <img
-            src={leftNavigation}
-            onClick={() => this.moveSlide(-1)}
-            style={{ marginRight: "2rem" }}
-          />
-
-          <img
-            src={rightNavigation}
-            onClick={() => this.moveSlide(1)}
-            style={{ marginLeft: "2rem" }}
-          />
+        <NavigationButtons className={navigationClass}>
+          <button onClick={() => this.moveSlide(-1)} type="button" className="carousel--arrow__prev">
+            {'<'}
+          </button>
+          <button  onClick={() => this.moveSlide(1)} type="button" className="carousel--arrow__next">
+            {'>'}
+          </button>
         </NavigationButtons>
       );
     }
